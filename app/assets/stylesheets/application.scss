@@ -1,0 +1,50 @@
+
+ @import "bootstrap";
+
+ .jumbotron{
+     background: rgb(165, 223, 220);
+     background-image: asset-url('first.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 425px;
+ }
+ #alpha-blog{
+     text-align: center;
+ }
+ #sing-up-button{
+
+ }
+
+ html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+
+footer {
+    /* just for demo */
+    background-color: #F8F8F8;
+    border-top: 1px solid #E7E7E7;
+    text-align:center;
+    padding:20px;
+   /* just for demo */ 
+
+  
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+}
+
+
