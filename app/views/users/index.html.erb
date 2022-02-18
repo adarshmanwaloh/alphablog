@@ -1,0 +1,39 @@
+<h1 class="text-center mt-4" >Alpha Blogers</h1>
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%  @users.each do |user| %>
+            <div class="card container text-center my-5 shadow mb-5 bg-body rounded">
+            <div class="card-header">
+            By <%= link_to  user.username ,user %>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= link_to  gravatar_for(user,size: 150),user  %>
+                </h5>
+                <p class="card-text"><%= pluralize( user.articles.count,"article")  %></p>
+                <%= link_to 'View profile', user,class: "btn btn-primary" %>
+                <%= link_to 'Edit', edit_user_path(user),class: "btn btn-warning"  %>
+            </div>
+            <div class="card-footer text-muted">
+                <small> Joined <%= time_ago_in_words(user.created_at) %>  </small>
+            </div>
+            </div>
+        
+            <% end %>
+        </tbody>
+    </table>
+
+    <p>
+    <%= link_to 'Create new article', new_article_path %>
+    </p>
+
+</div>
