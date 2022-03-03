@@ -14,10 +14,16 @@
             <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
             <%= link_to "Blogers",users_path,class: "nav-link active"  %>
           </li>
-          <li class="nav-item">
-            <%= link_to "NewArticles",new_article_path ,class: "nav-link"  %>
-          </li>
-          <li class="nav-item dropdown">
+
+          
+          <% if logged_in?  %>
+              <li class="nav-item">
+                <%= link_to "NewArticles",new_article_path ,class: "nav-link"  %>
+              </li>
+          <% end %>
+          
+         
+          <%# <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
@@ -27,14 +33,28 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
-          </li>
+          </li> %>
 
           
           <% if logged_in? %>
-          <li class="nav-item">
-            <%# <a class="nav-link disabled">Disabled</a> %>
-             <%= link_to current_user.username,user_path(current_user),class: "nav-link" %>
-            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <%= "(Admin)" if current_user.admin? %> Profile <%= current_user.username   %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li> 
+                <%= link_to "view your profile",user_path(current_user),class: "dropdown-item"   %>
+                </li>
+                <li>
+                <%= link_to "Edit your profile ",edit_user_path(current_user),class: "dropdown-item"  %>
+                </li>
+
+                <li>
+                  <%= link_to "Delete profile",user_path(current_user),class:"dropdown-item text-danger",method: :delete,data: {confirm: "Are you sure ?"}   %>
+                </li>
+                
+            </ul>
+          </li>
             <li class="nav-item">
             <%# <a class="nav-link disabled">Disabled</a> %>
              <%= link_to 'Logout',logout_path,class: "nav-link",method: :delete  %>
